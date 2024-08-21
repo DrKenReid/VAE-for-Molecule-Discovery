@@ -1,5 +1,3 @@
-Here's the text with appropriate emojis added:
-
 # 🧪 Variational Autoencoder for Molecule Discovery
 
 ## 🔍 Overview
