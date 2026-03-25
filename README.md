@@ -1,61 +1,40 @@
-# 🧪 Variational Autoencoder for Molecule Discovery
+# Variational Autoencoder for Molecule Discovery
 
-## 🔍 Overview
-This project implements a Variational Autoencoder (VAE) for generating novel molecular structures. It's particularly useful in drug discovery, where the goal is to generate new potential drug candidates. The project is designed to run in Google Colab, leveraging GPU acceleration for efficient training and generation.
+A Variational Autoencoder (VAE) that learns a continuous latent representation of molecular structures and generates novel candidates. Trained on the QM9 benchmark dataset using SMILES notation, with validity and novelty assessment of generated molecules.
 
-## ✨ Features
-- **🧠 VAE Architecture**: Utilizes a Variational Autoencoder to learn a compact representation of molecular structures and generate new ones.
-- **🧬 SMILES Representation**: Uses SMILES (Simplified Molecular-Input Line-Entry System) strings for molecular representation.
-- **📊 QM9 Dataset**: Trains on the QM9 dataset, a standard benchmark in molecular machine learning.
-- **👁️ Molecule Visualization**: Generates and visualizes molecular structures using RDKit.
-- **⚗️ Property Calculation**: Computes basic molecular properties for generated molecules.
-- **✅ Validity and Novelty Checks**: Assesses the validity of generated molecules and checks for novelty against the training set.
-- **☁️ Google Colab Integration**: Designed to run in Google Colab for easy access to GPU resources.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DrKenReid/VAE-for-Molecule-Discovery/blob/main/Variational_Autoencoder_for_Molecule_Discovery.ipynb)
 
-## 🛠️ Requirements
-- Google Colab environment
-- Required libraries (automatically installed in the notebook):
-  - PyTorch
-  - RDKit
-  - Pandas
-  - Pillow
-  - IPython
+## Techniques Demonstrated
 
-## 🚀 Usage
-1. Open the notebook in Google Colab.
-2. Run the cells in order, following the instructions in the notebook.
-3. The notebook will guide you through:
-   - Setting up the environment
-   - Loading and preprocessing the QM9 dataset
-   - Defining and training the VAE model
-   - Generating new molecules
-   - Visualizing and analyzing the generated molecules
+| Category | Details |
+|---|---|
+| **Generative Modelling** | Variational Autoencoder with KL-divergence regularisation |
+| **Molecular Representation** | SMILES encoding/decoding, character-level tokenisation |
+| **Deep Learning** | PyTorch GRU-based encoder/decoder, latent space sampling |
+| **Cheminformatics** | RDKit molecule parsing, property calculation, structure visualisation |
+| **Evaluation** | Validity rate, novelty against training set, molecular property distributions |
+| **Dataset** | QM9 — standard benchmark for small organic molecules |
 
-## ⚙️ Configuration
-You can modify the following parameters in the notebook:
-- `hidden_dim`: Dimension of the hidden state in GRU layers
-- `latent_dim`: Dimension of the latent space
-- `batch_size`: Batch size for training
-- `num_epochs`: Number of training epochs
+## How to Use
 
-## 📤 Output
-The notebook generates several outputs:
-1. Training loss plots
-2. Generated SMILES strings
-3. Visualizations of generated molecules
-4. Analysis of molecular properties
-5. Validity and novelty statistics
+1. Open the notebook in Google Colab using the badge above (GPU recommended for faster training).
+2. Run cells in order — the QM9 dataset is downloaded automatically.
+3. The notebook walks through environment setup, data preprocessing, model training, and molecule generation.
+4. Generated molecules are visualised with RDKit and assessed for validity and novelty.
 
-## ⚠️ Limitations
-- The model's performance is limited by the size and diversity of the training dataset (QM9).
-- Generated molecules may not always be synthetically feasible or stable.
-- The current implementation focuses on small organic molecules.
+## Configuration
 
-## 🤝 Contributing
-Contributions, issues, and feature requests are welcome. Feel free to open an issue or submit a pull request.
+Key parameters you can adjust:
 
-## 📄 License
-This project is open-source and available under the MIT License.
+- `hidden_dim` — GRU hidden state dimension
+- `latent_dim` — latent space dimensionality
+- `batch_size` — training batch size
+- `num_epochs` — number of training epochs
 
-## ⚖️ Disclaimer
-This tool is for research and educational purposes only. Generated molecules should not be considered as actual drug candidates without further extensive testing and validation.
+## A Note on Molecular Generation
+
+Generating valid SMILES strings is a hard problem — the syntax is strict, and most random character sequences are chemically meaningless. The VAE learns to navigate this by encoding known molecules into a smooth latent space where nearby points tend to decode into similar, valid structures. This is the core insight behind latent-space drug discovery: instead of searching a discrete combinatorial space, you optimise over a continuous manifold. The gap between "valid molecule" and "viable drug candidate" remains vast, but the approach demonstrates why generative models have become central to computational chemistry.
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
