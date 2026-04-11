@@ -38,3 +38,17 @@ Generating valid SMILES strings is a hard problem — the syntax is strict, and 
 ## License
 
 This project is open-source and available under the [MIT License](LICENSE).
+
+## Related
+
+- [CNN X-ray Image Classifier](https://github.com/DrKenReid/CNN-Tutorial---X-ray-image-classifier) — deep learning for medical imaging
+- [Generalized Analysis of Text Data](https://github.com/DrKenReid/Generalized-Analysis-of-Text-Data) — NLP reference notebook with 13 techniques
+- [kenreid.co.uk/data_science](https://www.kenreid.co.uk/data_science.html) — all projects, publications, and CV
+
+## Author
+
+**Ken Reid** — Data Scientist, photographer, and avid reader.
+
+- [kenreid.co.uk](https://www.kenreid.co.uk) — Portfolio & blog
+- [@kenreid.co.uk](https://bsky.app/profile/kenreid.co.uk) — Bluesky
+- [@DrKenReid](https://github.com/DrKenReid) — GitHub
