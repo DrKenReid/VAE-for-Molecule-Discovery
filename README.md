@@ -10,17 +10,20 @@ A Variational Autoencoder (VAE) that learns a continuous latent representation o
 |---|---|
 | **Generative Modelling** | Variational Autoencoder with KL-divergence regularisation |
 | **Molecular Representation** | SMILES encoding/decoding, character-level tokenisation |
-| **Deep Learning** | PyTorch GRU-based encoder/decoder, latent space sampling |
-| **Cheminformatics** | RDKit molecule parsing, property calculation, structure visualisation |
-| **Evaluation** | Validity rate, novelty against training set, molecular property distributions |
+| **Deep Learning** | PyTorch GRU-based encoder/decoder, teacher forcing, KL annealing, mixed-precision training, latent-space sampling and interpolation |
+| **Cheminformatics** | RDKit molecule parsing, canonicalisation, property calculation, structure visualisation |
+| **Evaluation** | Train/validation/test split, held-out reconstruction accuracy, raw (unrepaired) validity, canonical novelty against the training set, property distributions |
+| **Reproducibility** | Fixed random seeds, version-pinned dependencies, deterministic data splits |
 | **Dataset** | QM9 — standard benchmark for small organic molecules |
 
 ## How to Use
 
 1. Open the notebook in Google Colab using the badge above (GPU recommended for faster training).
-2. Run cells in order — the QM9 dataset is downloaded automatically.
-3. The notebook walks through environment setup, data preprocessing, model training, and molecule generation.
-4. Generated molecules are visualised with RDKit and assessed for validity and novelty.
+2. Run cells in order (*Runtime → Run all*) — the QM9 dataset is downloaded automatically and split into train/validation/test sets.
+3. The notebook walks through environment setup, data preprocessing, model training (with a validation loop), and molecule generation.
+4. Generated molecules are visualised with RDKit and assessed for reconstruction accuracy, raw validity, and canonical novelty; a latent-space interpolation shows the smoothness of the learned representation.
+
+> The committed notebook has its outputs cleared — run all cells in Colab to regenerate them.
 
 ## Configuration
 
@@ -30,6 +33,7 @@ Key parameters you can adjust:
 - `latent_dim` — latent space dimensionality
 - `batch_size` — training batch size
 - `num_epochs` — number of training epochs
+- `SEED` — global random seed for reproducible splits, training, and sampling
 
 ## A Note on Molecular Generation
 
